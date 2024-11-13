@@ -1,8 +1,7 @@
 const Login = ()=>{
     return(
         <>
-        <div className="container">
-    <div className="row justify-content-center">
+       
         <div className="col-md-4">
             <div className="card shadow">
                 <div className="card-body">
@@ -20,12 +19,11 @@ const Login = ()=>{
                     </form>
                 </div>
                 <div className="card-footer text-center mt-2">
-                    <small> ,t have an account? <a href="#">Sign up</a></small>
+                    <small> ,t have an account? <a href="/regester">Sign up</a></small>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+
         </>
     )
 }
