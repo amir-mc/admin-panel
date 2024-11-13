@@ -1,5 +1,7 @@
-import Login from "./features/identify/login";
-import Register from "./features/identify/regester";
+import { RouterProvider } from "react-router-dom";
+import router from "./router";
+
+
 
 
 
@@ -8,8 +10,7 @@ function App() {
 
 
   return (
-   //<Login></Login>
-   <Register></Register>
+    <RouterProvider router={router}></RouterProvider>
   )
 }
 
