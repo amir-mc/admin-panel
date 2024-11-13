@@ -1,22 +1,15 @@
-import { createBrowserRouter } from "react-router-dom";
-import Login from "./features/identify/login";
-import Register from "./features/identify/regester";
-import IdentiyLayout from "./layout/identity-lay";
+import { Outlet } from "react-router-dom"
 
-const router =  createBrowserRouter([
-    {
-        element:<IdentiyLayout></IdentiyLayout>,
-        children:[
-            {
-                path:'login', 
-                element: <Login/>
-            },
-            {
-                path:'regester',
-                element:<Register/>
-            }
-        ]
-    }
-   
-])
-export default router
+const IdentiyLayout=()=>{
+    return(
+        <>
+        <div className="container">
+        <div className="row justify-content-center">.
+            <Outlet></Outlet>
+            </div>
+            </div>
+        </>
+    )   
+}
+
+export default IdentiyLayout
