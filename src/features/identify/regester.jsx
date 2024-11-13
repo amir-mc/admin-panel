@@ -1,9 +1,8 @@
 const Register =()=>{
-    return(
+    return( 
 <>
 
-<div className="container">
-    <div className="row justify-content-center">
+
         <div className="col-md-6 col-lg-5">
             <div className="card shadow">
                 <div className="card-body">
@@ -33,12 +32,11 @@ const Register =()=>{
                     </form>
                 </div>
                 <div className="card-footer text-center mt-2">
-                    <small>Already have an account? <a href="#">Log in</a></small>
+                    <small>Already have an account? <a href="/login">Log in</a></small>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+
 
 </>
     )
