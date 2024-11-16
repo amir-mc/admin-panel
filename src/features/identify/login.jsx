@@ -21,9 +21,9 @@ const Login = ()=>{
                 <div className="card-footer text-center mt-2">
                     <small> ,t have an account? <a href="/regester">Sign up</a></small>
                 </div>
-            </div>
+            </div> 
         </div>
-
+ 
         </>
     )
 }
