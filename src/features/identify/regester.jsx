@@ -1,13 +1,13 @@
 const Register =()=>{
     return( 
 <>
+        
 
-
-        <div className="col-md-6 col-lg-5">
-            <div className="card shadow">
-                <div className="card-body">
-                    <h3 className="card-title text-center mb-4">Register</h3>
-                    <form action="/submit_register" method="post">
+        <div className="col-md-6 col-lg-5"> 
+            <div className="card shadow"> 
+                <div className="card-body"> 
+                    <h3 className="card-title text-center mb-4">Register</h3> 
+                    <form action="/submit_register" method="post"> 
                         <div className="mb-3">
                             <label  className="form-label">Full Name</label>
                             <input type="text" className="form-control" id="fullName" name="fullName" required/>
