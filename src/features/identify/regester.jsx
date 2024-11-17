@@ -1,4 +1,8 @@
+import { useForm } from "react-hook-form"
+
 const Register =()=>{
+    const{register,watch,handleSubmit,formState:{errors}}= useForm()
+    const onsub = data =>console.log(data)
     return( 
 <>
         
@@ -7,26 +11,52 @@ const Register =()=>{
             <div className="card shadow"> 
                 <div className="card-body"> 
                     <h3 className="card-title text-center mb-4">Register</h3> 
-                    <form action="/submit_register" method="post"> 
+                    <form onSubmit={handleSubmit(onsub)}> 
                         <div className="mb-3">
                             <label  className="form-label">Full Name</label>
-                            <input type="text" className="form-control" id="fullName" name="fullName" required/>
+                            <input {...register('name',{
+                                required:'inter name !'
+
+                            })} className={`form-control ${errors.name && 'is-invalid'}`}  />
+                            {
+                                errors.name && errors.name.type === 'required' &&(
+                                    <p className="text-danger small fw-bolder mt-1">
+                                       {errors.name.message} 
+                                    </p>
+                                )
+                            }
                         </div>
                         <div className="mb-3">
                             <label  className="form-label">Email address</label>
-                            <input type="email" className="form-control" id="email" name="email" required/>
+                            <input {...register('email',{ 
+                                required:'inter email'
+
+                            })}
+                            
+                             type="email" className={`form-control ${errors.email && 'is-invalid'}`}  />
                         </div>
                         <div className="mb-3">
                             <label  className="form-label">Username</label>
-                            <input type="text" className="form-control" id="username" name="username" required/>
+                            <input {...register('user',{
+                                required:'inter useer'
+                            })} type="text" className={`form-control ${errors.user && 'is-invalid'}`}  />
                         </div>
                         <div className="mb-3">
                             <label  className="form-label">Password</label>
-                            <input type="password" className="form-control" id="password" name="password" required/>
+                            <input {...register('pass',{
+                                required:'inter pass'
+                            })} type="password" className={`form-control ${errors.pass && 'is-invalid'}`} />
                         </div>
                         <div className="mb-3">
                             <label  className="form-label">Confirm Password</label>
-                            <input type="password" className="form-control" id="confirmPassword" name="confirmPassword" required/>
+                            <input {...register('confirmpass',{
+                                required:'inter pass',
+                                validate: (value)=>{
+                                    if(watch('pass')!==value){
+                                        return 'isnt same '
+                                    }
+                                }
+                            })} type="password"  className={`form-control ${errors.confirmpass && 'is-invalid'}`}  />
                         </div>
                         <button type="submit" className="btn btn-primary w-100">Register</button>
                     </form>
