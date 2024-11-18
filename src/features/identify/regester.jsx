@@ -1,8 +1,19 @@
 import { useForm } from "react-hook-form"
+import { Http } from "../../core/api-context"
+import { useNavigate, useNavigation, useSubmit } from "react-router-dom"
 
 const Register =()=>{
     const{register,watch,handleSubmit,formState:{errors}}= useForm()
-    const onsub = data =>console.log(data)
+
+    const usesub=useSubmit();
+    const onsub = (data) =>{
+        const {confirmpass,...userData}=data
+        usesub(userData,{method:'post'})
+    }
+
+        const navigate = useNavigation()
+    const issub=navigate.state !== 'idle'
+
     return( 
 <>
         
@@ -26,21 +37,7 @@ const Register =()=>{
                                 )
                             }
                         </div>
-                        <div className="mb-3">
-                            <label  className="form-label">Email address</label>
-                            <input {...register('email',{ 
-                                required:'inter email'
-
-                            })}
-                            
-                             type="email" className={`form-control ${errors.email && 'is-invalid'}`}  />
-                        </div>
-                        <div className="mb-3">
-                            <label  className="form-label">Username</label>
-                            <input {...register('user',{
-                                required:'inter useer'
-                            })} type="text" className={`form-control ${errors.user && 'is-invalid'}`}  />
-                        </div>
+                    
                         <div className="mb-3">
                             <label  className="form-label">Password</label>
                             <input {...register('pass',{
@@ -58,7 +55,10 @@ const Register =()=>{
                                 }
                             })} type="password"  className={`form-control ${errors.confirmpass && 'is-invalid'}`}  />
                         </div>
-                        <button type="submit" className="btn btn-primary w-100">Register</button>
+                        <button type="submit" disabled={issub} className="btn btn-primary w-100">
+                            {issub ? 'submiting' :'submit' }
+                            
+                            </button>
                     </form>
                 </div>
                 <div className="card-footer text-center mt-2">
@@ -72,3 +72,11 @@ const Register =()=>{
     )
 }
 export default Register
+
+export async function registerAction({request}) {
+    
+    const formData= await request.formData()
+    const data= Object.fromEntries(formData)
+    const response = await Http.post('/Users',data)
+    return response.status===200
+}
