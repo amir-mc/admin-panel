@@ -1,6 +1,8 @@
 import { useForm } from "react-hook-form"
 import { Http } from "../../core/api-context"
 import {  useActionData, useNavigation, useRouteError, useSubmit } from "react-router-dom"
+import { useTransition } from "react"
+import { useTranslation } from "react-i18next"
 
 const Register =()=>{
     const{register,watch,handleSubmit,formState:{errors}}= useForm()
@@ -17,6 +19,8 @@ const Register =()=>{
         const navigate = useNavigation()
     const issub=navigate.state !== 'idle'
     const issus=useActionData();
+
+    const {t} = useTranslation()
 
     return( 
 <>
@@ -60,11 +64,14 @@ const Register =()=>{
                             })} type="password"  className={`form-control ${errors.confirmpass && 'is-invalid'}`}  />
                         </div> }
                         <button type="submit" disabled={issub} className="btn btn-primary w-100">
-                            {issub ? 'submiting' :'submit' }
-                            
-                            </button>
+                            {/* {issub ? 'submiting' :'submit' } */  }
+                          {t('register.register')}
+                           
+                             </button>
+                          
                     </form>
-                            {
+                          
+                             {
                                  userError && (
                                     <div>
                                         {
