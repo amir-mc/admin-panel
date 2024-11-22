@@ -2,8 +2,8 @@ const Login = ()=>{
     return(
         <>
        
-        <div className="col-md-4">
-            <div className="card shadow">
+        <div className="col-md-4 bg-dark">
+            <div className="card shadow bg-light">
                 <div className="card-body">
                     <h3 className="card-title text-center mb-4">Login</h3>
                     <form action="/submit_login" method="post">
