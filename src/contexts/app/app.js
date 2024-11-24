@@ -6,6 +6,12 @@ const appreducer=(state,action)=>{
                 language:action.payload
             }
         }
+        case 'CHANGE_THME':{
+            return{
+                ...state,
+                theme:action.payload
+            }
+        }
     }
 }
 export default appreducer;
