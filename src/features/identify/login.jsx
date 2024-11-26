@@ -1,10 +1,13 @@
 import { useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import { Http } from "../../core/api-context"
-import { redirect, useSubmit } from "react-router-dom"
+import { redirect, useRouteError, useSubmit } from "react-router-dom"
 
 const Login = ()=>{
     const{register,watch,handleSubmit,formState:{errors}}= useForm()
+
+    const userError =useRouteError();
+
 
     const {t}=useTranslation() 
     const subform=useSubmit()
@@ -44,7 +47,17 @@ const Login = ()=>{
                             })} type="password" className={`form-control ${errors.password && 'is-invalid'}`} />
                         </div>
 
-
+                          {
+                            
+                        userError && (
+                                    <div>
+                                        {
+                                            userError.response?.data.map(error => <p>{error.description}</p> )
+                                        
+                                        }
+                                    </div>
+                                 )
+                            }
                            
                         </div>
                         <button type="submit" className="btn btn-primary w-100">Login</button>
