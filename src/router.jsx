@@ -2,14 +2,16 @@ import { createBrowserRouter } from "react-router-dom";
 import Login, { loginaction } from "./features/identify/login";
 import Register, { registerAction } from "./features/identify/regester";
 import IdentiyLayout from "./layout/identity-lay";
-import MainLayout from "./layout/main-ly/main-lay";
+//import MainLayout from "./layout/main-ly/main-lay";
+  import MainLayout from "./layout/mian-ly/main-ly";
 import Courses from "./pages/courses";
+
 
 const router =  createBrowserRouter([
 
     {
             path:'/',
-            element:<MainLayout></MainLayout>,
+            element:<MainLayout/>,
             children:[{ 
                 element:<Courses/>,
                 index:true
