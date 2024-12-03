@@ -5,7 +5,7 @@ import IdentiyLayout from "./layout/identity-lay";
 //import MainLayout from "./layout/main-ly/main-lay";
   import MainLayout from "./layout/mian-ly/main-ly";
 import Courses from "./pages/courses";
-
+import Courses, { coursesloder } from "./pages/courses";
 
 const router =  createBrowserRouter([
 
@@ -14,7 +14,8 @@ const router =  createBrowserRouter([
             element:<MainLayout/>,
             children:[{ 
                 element:<Courses/>,
-                index:true
+                index:true,
+                loader:coursesloder
             }
             ]
         },
@@ -25,7 +26,7 @@ const router =  createBrowserRouter([
             {
                 path:'login', 
                 element: <Login/>,
-                action:loginaction,
+                action:loginAction,
                 errorElement:<Login></Login>
             },
             {
