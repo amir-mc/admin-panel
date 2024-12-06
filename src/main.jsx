@@ -6,6 +6,6 @@ import { Appprovider } from './contexts/app/app-context.jsx'
 
 createRoot(document.getElementById('root')).render(
 <Appprovider>
-     <App /> 
+     <App/> 
 </Appprovider> 
 )
