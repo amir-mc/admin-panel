@@ -1,22 +1,23 @@
-import { useLoaderData } from "react-router-dom"
+//import { useLoaderData } from "react-router-dom"
 import { httpintersep } from "../core/api-context"
+import CoursesList from "../features/component/courses-list"
 
 const Courses = ()=>{
-    const cors=useLoaderData()
+   // const cors=useLoaderData()
     return(
         <>
-        {
-        cors.map((corses)=>(
-           
-            <div key={corses.id}>
-                {
-                    corses.title
-                }
-            </div>
-            
-        ))
+    <div className="row">
         
-    }
+        <div className="col-12" >
+            <div className="d-flex align-item-center justify-content-between mb-5">
+                <a className="btn btn-primery">
+                    add category
+                </a>
+            </div>
+            <CoursesList/>
+        </div>
+
+         </div>
 </>
     )
 }
