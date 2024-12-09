@@ -16,6 +16,10 @@ const router =  createBrowserRouter([
                 element:<Courses/>,
                 index:true,
                 loader:courseslod
+            },
+            {
+                path:'categoty-cours',
+                element:<CategotyCours/>
             }
             ]
         },
