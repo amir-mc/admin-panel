@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { useAppContext } from "../../contexts/app/app-context";
+import { Link } from "react-router-dom";
 
 const SlideBar =()=>{ 
     const {t}=useTranslation()
@@ -15,7 +16,7 @@ const SlideBar =()=>{
                     {t('mainLayout.sidebar.courseManagement')}
                 </li>
                 <li className="sidebar-item">
-                 
+                <Link className="sidebar-link" to={'/'}>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
@@ -38,14 +39,14 @@ const SlideBar =()=>{
                                 ry="2"
                             ></rect>
                         </svg>
-
+               
                         <span className="align-middle me-2">
                             {t("mainLayout.sidebar.allCourses")}
                         </span>
-                    
+                         </Link>
                 </li>
                 <li className="sidebar-item">
-                   
+                <Link className="sidebar-link" to={'/categoty-cours'}>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
@@ -68,11 +69,11 @@ const SlideBar =()=>{
                                 ry="2"
                             ></rect>
                         </svg>
-
+                          
                         <span className="align-middle me-2">
                             {t("mainLayout.sidebar.coursesCategory")}
                         </span>
-                  
+                    </Link>
                 </li>
                 <li className="sidebar-item">
                     <a className="sidebar-link">
@@ -102,7 +103,7 @@ const SlideBar =()=>{
                     {t("mainLayout.sidebar.userManagement")}
                 </li>
                 <li className="sidebar-item">
-                    <a className="sidebar-link">
+                    <Link className="sidebar-link">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
@@ -122,7 +123,7 @@ const SlideBar =()=>{
                         <span className="align-middle me-2">
                             {t("mainLayout.sidebar.teacherManagement")}
                         </span>
-                    </a>
+                    </Link>
                 </li>
                 <li className="sidebar-item">
                     <a className="sidebar-link">
