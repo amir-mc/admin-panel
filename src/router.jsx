@@ -6,6 +6,7 @@ import IdentiyLayout from "./layout/identity-lay";
   import MainLayout from "./layout/mian-ly/main-ly";
 import Courses from "./pages/courses";
 import Courses, { courseslod } from "./pages/courses";
+import CourseDetail, { courseDetalFunction } from "./features/component/course-detail";
 
 const router =  createBrowserRouter([
 
@@ -20,6 +21,11 @@ const router =  createBrowserRouter([
             {
                 path:'categoty-cours',
                 element:<CategotyCours/>
+            },
+            {
+                path:'courses/:id',
+                element:<CourseDetail/>,
+                loader:courseDetalFunction
             }
             ]
         },
