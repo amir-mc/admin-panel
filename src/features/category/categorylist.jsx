@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom"
+import Pageing from "./pageing"
  
-const CategoryList = ({category:{data,totalRecord}})=>{
+const CategoryList = ({category:{data,totalRecords}})=>{
 
     return(
         <>
@@ -27,8 +28,11 @@ const CategoryList = ({category:{data,totalRecord}})=>{
                                         {cate.name}
                                     </td>
                                     <td className="table-action">
-                                        <a>
-
+                                        <a className="ms-3">
+                                            DELEITE
+                                        </a>
+                                        <a className="ms-3">
+                                            EDIT
                                         </a>
                                     </td>
 
@@ -40,6 +44,10 @@ const CategoryList = ({category:{data,totalRecord}})=>{
                         }
                     </tbody>
                 </table>
+                <div className="card-footer">
+                <Pageing totalRecords={totalRecords} />
+                </div>
+                
             </div>
         </div>
        </div>
