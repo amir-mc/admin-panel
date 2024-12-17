@@ -37,7 +37,7 @@ export async function categorycourse({request}) {
 }
 const loadCategory= async (request)=>{
     const page = new URL(request.url).searchParams.get('page') || 1;
-    const pagenum=2;
+  const pagenum=import.meta.env.VITE_PAGE_SIZE;
     let url="/CourseCategory/sieve"
     url +=`?page=${page}&pagesize=${pagenum}`
     const response = await interSeptservise.get(url)
