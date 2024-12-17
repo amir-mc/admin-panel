@@ -1,5 +1,5 @@
 import axios from "axios"
-const basUrl="https://react-mini-projects-api.classbon.com";
+const basUrl=import.meta.env.VITE_BASE_URL;
 
 export const Http= axios.create({
     baseURL:basUrl
