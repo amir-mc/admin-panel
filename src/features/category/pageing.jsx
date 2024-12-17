@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import { useSearchParams } from 'react-router-dom'
-const Pageing =({totalRecords,pageSize=3})=>{
+const Pageing =({totalRecords,pageSize= import.meta.env.VITE_PAGE_SIZE})=>{
     const pages= Math.ceil(totalRecords/pageSize)
     const [searchparam , setSearchparam]=useSearchParams();
     const curentpage = +searchparam.get('page')||1
