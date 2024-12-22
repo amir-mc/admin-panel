@@ -26,6 +26,9 @@ const CategotyCours  =()=>{
         </div>
 
          </div>
+                <Modal isOpen={deletemodeal} close={setDeletemodal} title='DELETE' body='ARE YOU SHore'>
+
+         </Modal>
         </>
     )
 }
