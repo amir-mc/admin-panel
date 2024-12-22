@@ -5,6 +5,7 @@ import CoursesList from "../features/component/courses-list"
 import CategoryList from "../features/category/categorylist"
 
 const CategotyCours  =()=>{
+    const [deletemodeal , setDeletemodal]=useState(true)
     const data = useLoaderData()
     return(
         <>
