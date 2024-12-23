@@ -1,4 +1,4 @@
-import { Await, defer, useLoaderData } from "react-router-dom"
+import { Await, defer, useLoaderData, useNavigate } from "react-router-dom"
 import { interSeptservise } from "../core/api-context"
 import { Suspense, useState } from "react"
 import CoursesList from "../features/component/courses-list"
@@ -7,6 +7,20 @@ import Modal from "../component/modal"
 
 const CategotyCours  =()=>{
     const [deletemodeal , setDeletemodal]=useState(true)
+    const [categoryes,setCategoryes]=useState()
+    const navigat=useNavigate()
+    const categorydelet=categoryId=>{
+        setCategoryes(categoryId)
+        setDeletemodal(true)
+    }
+    const handelCategory= async()=>{
+        setDeletemodal(false)
+        const response = await interSeptservise.delete(`/CourseCategory/${categoryes}`)
+        if(response.status===200){
+            const url=new URL(window.location.href)
+        navigat(url.pathname+url.search)
+        }
+    }
     const data = useLoaderData()
     return(
         <>
@@ -21,7 +35,7 @@ const CategotyCours  =()=>{
             <Suspense fallback={<p>Loading</p>}>
             <Await resolve={data.category}>
                 {    
-                    (loadCategory)=> <CategoryList showmodal={setDeletemodal} category={loadCategory}/>
+                    (loadCategory)=> <CategoryList categorydelet={categorydelet} category={loadCategory}/>
                 } 
             </Await>
             </Suspense>
@@ -32,7 +46,7 @@ const CategotyCours  =()=>{
                     <button type="button" className="btn btn-secondary fw-bolder" onClick={()=>setDeletemodal(false)}>
                         REJECT
                     </button>x
-                    <button type="button" className="btn btn-warning fw-bolder">
+                    <button type="button" className="btn btn-warning fw-bolder" onClick={handelCategory}>
                         CONFIRM
                     </button>
          </Modal>
