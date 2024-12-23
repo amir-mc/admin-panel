@@ -1,57 +1,56 @@
-import { useLoaderData } from "react-router-dom"
-import Pageing from "./pageing"
- 
-const CategoryList = ({category:{data,totalRecords},showmodal})=>{
+import { Await, defer, useLoaderData } from "react-router-dom"
+import { interSeptservise } from "../core/api-context"
+import { Suspense, useState } from "react"
+import CoursesList from "../features/component/courses-list"
+import CategoryList from "../features/category/categorylist"
+import Modal from "../component/modal"
 
+const CategotyCours  =()=>{
+    const [deletemodeal , setDeletemodal]=useState(true)
+    const data = useLoaderData()
     return(
         <>
-       <div className="row">
-        <div className="col-12">
-            <div className="card">
-                <table className="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>
-                                name
-                            </th>
-                            <th>
-                                op
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            data.map((cate)=>{
-                               return(
-                                <tr key={cate.id}>
-                                    <td >
-                                        {cate.name}
-                                    </td>
-                                    <td className="table-action">
-                                        <a className="ms-3" onClick={()=>showmodal(true)}> 
-                                            DELEITE
-                                        </a>
-                                        <a className="ms-3">
-                                            EDIT
-                                        </a>
-                                    </td> 
-
-                                </tr>
-                               )
-
-                            }
-                            )
-                        }
-                    </tbody>
-                </table>
-                <div className="card-footer">
-                <Pageing totalRecords={totalRecords} />
-                </div>
-                
+            <div className="row">
+        
+        <div className="col-12" >
+            <div className="d-flex align-item-center justify-content-between mb-5">
+                <a className="btn btn-primery">
+                    add category
+                </a>
             </div>
+            <Suspense fallback={<p>Loading</p>}>
+            <Await resolve={data.category}>
+                {    
+                    (loadCategory)=> <CategoryList showmodal={setDeletemodal} category={loadCategory}/>
+                } 
+            </Await>
+            </Suspense>
         </div>
-       </div>
+
+         </div>
+         <Modal isOpen={deletemodeal} close={setDeletemodal} title='DELETE' body='ARE YOU SHore'>
+                    <button type="button" className="btn btn-secondary fw-bolder" onClick={()=>setDeletemodal(false)}>
+                        REJECT
+                    </button>x
+                    <button type="button" className="btn btn-warning fw-bolder">
+                        CONFIRM
+                    </button>
+         </Modal>
         </>
     )
 }
-export default CategoryList
+export async function categorycourse({request}) {
+    return defer({
+        category:loadCategory(request)
+    })
+    
+}
+const loadCategory= async (request)=>{
+    const page = new URL(request.url).searchParams.get('page') || 1;
+    const pagenum=import.meta.env.VITE_PAGE_SIZE;
+    let url="/CourseCategory/sieve"
+    url +=`?page=${page}&pagesize=${pagenum}`
+    const response = await interSeptservise.get(url)
+    return response.data
+}
+export default CategotyCours
