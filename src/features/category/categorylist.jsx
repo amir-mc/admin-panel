@@ -1,7 +1,7 @@
 import { useLoaderData } from "react-router-dom"
 import Pageing from "./pageing"
  
-const CategoryList = ({category:{data,totalRecords}})=>{
+const CategoryList = ({category:{data,totalRecords},showmodal})=>{
 
     return(
         <>
@@ -28,13 +28,13 @@ const CategoryList = ({category:{data,totalRecords}})=>{
                                         {cate.name}
                                     </td>
                                     <td className="table-action">
-                                        <a className="ms-3">
+                                        <a className="ms-3" onClick={()=>showmodal(true)}> 
                                             DELEITE
                                         </a>
                                         <a className="ms-3">
                                             EDIT
                                         </a>
-                                    </td>
+                                    </td> 
 
                                 </tr>
                                )
