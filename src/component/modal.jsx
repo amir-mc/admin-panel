@@ -6,8 +6,8 @@ const Modal=({isOpen,children,body,close,title})=>{
     return(
         <>
         {
-            isOpen && createPortal(<div className="modal" style={{display:"block"}}>
-                <div className="modal-dialog modal-dialog-centered">
+            isOpen && createPortal(<div className="modal" onClick={()=>isOpen(false)} style={{display:"block"} }>
+                <div className="modal-dialog modal-dialog-centered" onClick={(e)=>  e.stopPropagation()}>
                     <div className="modal-content">
                         <div className="modal-header">
                             <h5 className="modal-title fw-bolder">{title}</h5>
