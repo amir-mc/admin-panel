@@ -4,6 +4,8 @@ import "./core/i18n"
 import { useAppContext } from "./contexts/app/app-context";
 import { useEffect } from "react";
 
+import 'react-toastify/ReactToastify.css'
+import { ToastContainer } from "react-toastify";
 
 
  
