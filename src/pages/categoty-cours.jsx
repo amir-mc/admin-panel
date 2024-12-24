@@ -4,6 +4,7 @@ import { Suspense, useState } from "react"
 import CoursesList from "../features/component/courses-list"
 import CategoryList from "../features/category/categorylist"
 import Modal from "../component/modal"
+import { toast } from "react-toastify"
 
 const CategotyCours  =()=>{
     const [deletemodeal , setDeletemodal]=useState(true)
@@ -15,11 +16,30 @@ const CategotyCours  =()=>{
     }
     const handelCategory= async()=>{
         setDeletemodal(false)
-        const response = await interSeptservise.delete(`/CourseCategory/${categoryes}`)
-        if(response.status===200){
-            const url=new URL(window.location.href)
-        navigat(url.pathname+url.search)
-        }
+        const response =  interSeptservise.delete(`/CourseCategory/${categoryes}`)
+
+        toast.promise(
+            response,{
+                pending:'HOLD ON',
+                success:{
+                    render(){
+                        const url=new URL(window.location.href)
+                         navigat(url.pathname+url.search)
+                         return 'DONE'
+                    }
+
+                },
+                error:{render({data}){
+                    {data}
+                }}
+            },{
+                position: "bottom-left"
+            }
+        
+        )
+    //   if(response.status===200){
+            
+       // }
     }
     const data = useLoaderData()
     return(
