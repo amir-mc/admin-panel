@@ -5,10 +5,13 @@ import CoursesList from "../features/component/courses-list"
 import CategoryList from "../features/category/categorylist"
 import Modal from "../component/modal"
 import { toast } from "react-toastify"
+import Addorupdate from "../features/category/addupdate"
+import { add } from "lodash"
 
 const CategotyCours  =()=>{
-    const [deletemodeal , setDeletemodal]=useState(true)
+    const [deletemodeal , setDeletemodal]=useState(false)
     const [categoryes,setCategoryes]=useState()
+    const [addup,setaddup]=useState(false)
     const navigat=useNavigate()
     const categorydelet=categoryId=>{
         setCategoryes(categoryId)
@@ -48,10 +51,13 @@ const CategotyCours  =()=>{
         
         <div className="col-12" >
             <div className="d-flex align-item-center justify-content-between mb-5">
-                <a className="btn btn-primery">
+                <a className="btn btn-primery" onClick={()=>setaddup(true)}>
                     add category
                 </a>
             </div>
+            {
+                addup && <Addorupdate  setaddup={setaddup}/>   
+            }
             <Suspense fallback={<p>Loading</p>}>
             <Await resolve={data.category}>
                 {    
