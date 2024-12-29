@@ -7,12 +7,14 @@ import Modal from "../component/modal"
 import { toast } from "react-toastify"
 import Addorupdate from "../features/category/addupdate"
 import { add } from "lodash"
+import { useCategoryContext } from "../features/category/category-context"
 
 const CategotyCours  =()=>{
     const [deletemodeal , setDeletemodal]=useState(false)
     const [categoryes,setCategoryes]=useState()
     const [addup,setaddup]=useState(false)
     const navigat=useNavigate()
+    const {category}=useCategoryContext()
     const categorydelet=categoryId=>{
         setCategoryes(categoryId)
         setDeletemodal(true)
@@ -56,7 +58,7 @@ const CategotyCours  =()=>{
                 </a>
             </div>
             {
-                addup && <Addorupdate  setaddup={setaddup}/>   
+               ( addup || category) && <Addorupdate  setaddup={setaddup}/>   
             }
             <Suspense fallback={<p>Loading</p>}>
             <Await resolve={data.category}>
