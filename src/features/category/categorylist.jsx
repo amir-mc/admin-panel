@@ -1,8 +1,9 @@
 import { useLoaderData } from "react-router-dom"
 import Pageing from "./pageing"
+import { useCategoryContext } from "./category-context"
  
 const CategoryList = ({category:{data,totalRecords},categorydelet})=>{
-
+const {setCategory}=useCategoryContext();
     return(
         <>
        <div className="row">
@@ -31,13 +32,13 @@ const CategoryList = ({category:{data,totalRecords},categorydelet})=>{
                                         <a className="ms-3" onClick={()=>categorydelet(cate.id)}> 
                                             DELEITE
                                         </a>
-                                        <a className="ms-3">
+                                        <a className="ms-3" onClick={()=>setCategory(cate)}>
                                             EDIT
                                         </a>
                                     </td> 
 
                                 </tr>
-                               )
+                               )  
 
                             }
                             )
