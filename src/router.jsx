@@ -8,6 +8,7 @@ import Courses from "./pages/courses";
 import Courses, { courseslod } from "./pages/courses";
 import CourseDetail, { courseDetalFunction } from "./features/component/course-detail";
 
+import { CategoryProvider } from "./features/category/category-context";
 const router =  createBrowserRouter([
 
     {
@@ -20,7 +21,10 @@ const router =  createBrowserRouter([
             },
             {
                 path:'categoty-cours',
-                element:<CategotyCours/>,
+              element:(<CategoryProvider>
+                    <CategotyCours/>
+                </CategoryProvider>)
+                ,
                 loader:categorycourse
             },
             {
