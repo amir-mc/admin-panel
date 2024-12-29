@@ -1,11 +1,11 @@
 import { createContext, useContext, useState } from "react"
 
 const Categorycontext=createContext()
-const CategoryProvider= ({childern})=>{
+const CategoryProvider= ({children})=>{
     const[category,setCategory]=useState();
     return(
         <Categorycontext.Provider value={{category,setCategory}}>
-                {childern}
+                {children}
         </Categorycontext.Provider>
     )
 }
