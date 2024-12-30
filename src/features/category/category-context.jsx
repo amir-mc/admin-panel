@@ -12,4 +12,4 @@ const CategoryProvider= ({children})=>{
 const useCategoryContext=()=>{
     return useContext(Categorycontext)
 } 
-export {useCategoryContext,CategoryProvider}
+export {useCategoryContext,CategoryProvider} 
