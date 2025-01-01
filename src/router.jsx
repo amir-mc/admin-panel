@@ -9,11 +9,14 @@ import Courses, { courseslod } from "./pages/courses";
 import CourseDetail, { courseDetalFunction } from "./features/component/course-detail";
 
 import { CategoryProvider } from "./features/category/category-context";
+import Notfound from "./pages/notfound";
+import ServerErorr from "./pages/servererror";
 const router =  createBrowserRouter([
 
     {
             path:'/',
             element:<MainLayout/>,
+          errorElement:<ServerErorr/>,
             children:[{ 
                 element:<Courses/>,
                 index:true,
@@ -51,7 +54,11 @@ const router =  createBrowserRouter([
                 errorElement:<Register/>
             }
         ]
-    }
+    },
+  {
+      path:'*',
+        element:<Notfound/>
+  }
    
 ])
 export default router
